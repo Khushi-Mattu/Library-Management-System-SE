@@ -8,11 +8,10 @@ session_start();
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Books!!</title>
-
     <?php
     include "includes/head_links.php";
     ?>
-    <link href="css/home.css" rel="stylesheet" />
+    <link href="css/index.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -21,14 +20,14 @@ session_start();
     ?>
 
     <div class="banner-container">
-        <h2 class="white pb-3">This is the perfect place for bookworms!</h2>
+        <h2 class="white-pb-3">This is the perfect place for bookworms!</h2>
 
         <form id="search-form" action="book_list.php" method="GET">
             <div class="input-group city-search">
                 <input type="text" class="form-control input-city" id='city' name='city' placeholder="Enter the book name you want to search for" />
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-secondary">
-                        <i class="fa fa-search"></i>
+                        <em class="fa fa-search"></em>
                     </button>
                 </div>
             </div>
