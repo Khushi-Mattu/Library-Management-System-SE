@@ -2,10 +2,10 @@
 session_start();
 require "includes/database_connect.php";
 
-$mem_id = isset($_SESSION['mem_id']) ? $_SESSION['mem_id'] : NULL;
-$book_name = $_GET["book_name"];
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : NULL;
+$book = $_GET["bookName"];
 
-$sql_1 = "SELECT * FROM stock WHERE name = '$book_name'";
+$sql_1 = "SELECT * FROM stock WHERE book_name = '$book'";
 $result_1 = mysqli_query($conn, $sql_1);
 if (!$result_1) {
     echo "Something went wrong!";
@@ -16,8 +16,7 @@ if (!$city) {
     echo "Sorry! We do not have this book.";
     return;
 }
-$book_id = $stock['book_id'];
-
+$book_id = $book['book_id'];
 
 $sql_2 = "SELECT * FROM stock WHERE book_id = $book_id";
 $result_2 = mysqli_query($conn, $sql_2);
@@ -25,7 +24,7 @@ if (!$result_2) {
     echo "Something went wrong!";
     return;
 }
-$properties = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
+$stock = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
 
 $sql_3 = "SELECT * 
             FROM borrowed_books iup
@@ -36,7 +35,7 @@ if (!$result_3) {
     echo "Something went wrong!";
     return;
 }
-$interested_users_properties = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
+$interested_users_books = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +48,7 @@ $interested_users_properties = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
     <?php
     include "includes/head_links.php";
     ?>
-    <link href="css/property_list.css" rel="stylesheet" />
+    <link href="css/book_list.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -70,17 +69,17 @@ $interested_users_properties = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
 
     <div class="page-container">
         <?php
-        foreach ($stock as $stock) {
+        foreach ($stock as $book) {
             $book_images = glob("img/books/" . $stock['id'] . "/*");
         ?>
-            <div class="property-card property-id-<?= $stock['book_id'] ?> row">
+            <div class="book-card book-id-<?= $stock['book_id'] ?> row">
                 <div class="image-container col-md-4">
                     <img src="<?= $book_images[0] ?>" />
                 </div>
                 <div class="content-container col-md-8">
                     <div class="row no-gutters justify-content-between">
                         <?php
-                        $total_rating = ($property['rating_plot'] + $property['rating_suspense'] + $property['rating_story_building']) / 3;
+                        $total_rating = ($book['rating_plot'] + $book['rating_suspense'] + $book['rating_story_building']) / 3;
                         $total_rating = round($total_rating, 1);
                         ?>
                         <div class="star-container" title="<?= $total_rating ?>">
@@ -107,11 +106,11 @@ $interested_users_properties = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
                             <?php
                             $interested_users_count = 0;
                             $is_interested = false;
-                            foreach ($borrowed_books as $interested_user_property) {
-                                if ($interested_user_property['property_id'] == $book['book_id']) {
+                            foreach ($borrowed_book as $interested_user_book) {
+                                if ($interested_user_book['book_id'] == $book['book_id']) {
                                     $interested_users_count++;
 
-                                    if ($interested_user_property['user_id'] == $user_id) {
+                                    if ($interested_user_book['user_id'] == $user_id) {
                                         $is_interested = true;
                                     }
                                 }
@@ -119,11 +118,11 @@ $interested_users_properties = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
 
                             if ($is_interested) {
                             ?>
-                                <i class="is-interested-image fas fa-heart" book_id="<?= $stock['book_id'] ?>"></i>
+                                <i class="is-interested-image fas fa-heart" book_id="<?= $book['book_id'] ?>"></i>
                             <?php
                             } else {
                             ?>
-                                <i class="is-interested-image far fa-heart" book_id="<?= $stock['book_id'] ?>"></i>
+                                <i class="is-interested-image far fa-heart" book_id="<?= $book['book_id'] ?>"></i>
                             <?php
                             }
                             ?>
@@ -137,10 +136,10 @@ $interested_users_properties = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
                     </div>
                     <div class="row no-gutters">
                         <div class="price-container col-6">
-                            <div class="price">₹ <?= number_format($stock['price']) ?>/-</div>
+                            <div class="price">₹ <?= number_format($book['price']) ?>/-</div>
                         </div>
                         <div class="button-container col-6">
-                            <a href="book_details.php?book_id=<?= $stock['book_id'] ?>" class="btn btn-primary">View</a>
+                            <a href="book_details.php?book_id=<?= $book['book_id'] ?>" class="btn btn-primary">View</a>
                         </div>
                     </div>
                 </div>
@@ -150,7 +149,7 @@ $interested_users_properties = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
 
         if (count($book) == 0) {
         ?>
-            <div class="no-property-container">
+            <div class="no-book-container">
                 <p>No book to list</p>
             </div>
         <?php
@@ -164,7 +163,7 @@ $interested_users_properties = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
     include "includes/footer.php";
     ?>
 
-    <script type="text/javascript" src="js/property_list.js"></script>
+    <script type="text/javascript" src="js/book_list.js"></script>
 </body>
 
 </html>
