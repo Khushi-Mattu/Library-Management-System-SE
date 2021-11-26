@@ -11,51 +11,88 @@
 body{
     background-color:burlywood;
 }
-.fa {  
+
+  
+.fa:hover {  
+    opacity: 0.9;  
+}  
+.fa-facebook {  
+    background: #3B5998;  
+    color: white;
     padding: 20px 20px 20px 20px;  
     text-align: center;  
     margin: 5px 2px;  
     font-size: 30px; 
     justify-content:center;
-    align-items: center;
-    margin: 2 px;
+    align-items: center;     
     flex-wrap:wrap;
     gap:15px;
-  }  
-  .fa:hover {  
-    opacity: 0.9;  
-}  
-.fa-facebook {  
-    background: #3B5998;  
-    color: white;  
+
   }  
 .fa-twitter {  
     background: #55ACEE;  
-    color: white;  
+    color: white;
+    padding: 20px 20px 20px 20px;  
+    text-align: center;  
+    margin: 5px 2px;  
+    font-size: 30px; 
+    justify-content:center;
+    align-items: center;     
+    flex-wrap:wrap;
+    gap:15px;
   }  
 .fa-pinterest {  
     background: #cb2027;  
     color: white;  
+    padding: 20px 20px 20px 20px;  
+    text-align: center;  
+    margin: 5px 2px;  
+    font-size: 30px; 
+    justify-content:center;
+    align-items: center;   
+    flex-wrap:wrap;
+    gap:15px;
   }  
   .fa-linkedin {  
     background: #007bb5;  
     color: white;  
+    padding: 20px 20px 20px 20px;  
+    text-align: center;  
+    margin: 5px 2px;  
+    font-size: 30px; 
+    justify-content:center;
+    align-items: center;   
+    flex-wrap:wrap;
+    gap:15px;
   }  
   .fa-instagram {  
-    background: #125688;  
-    color: white;  
+    background: palevioletred;  
+    color: white; 
+    padding: 20px 20px 20px 20px;  
+    text-align: center;  
+    margin: 5px 2px;  
+    font-size: 30px; 
+    justify-content:center;
+    align-items: center;    
+    flex-wrap:wrap;
+    gap:15px;
   }  
   .fa-youtube {  
     background: #bb0000;  
     color: white;  
+    padding: 20px 20px 20px 20px;  
+    text-align: center;  
+    margin: 5px 2px;  
+    font-size: 30px; 
+    justify-content:center;
+    align-items: center;   
+    flex-wrap:wrap;
+    gap:15px;
   }  
 #footer {
    width:100%;
    height:60px;  
    bottom:0px; /* Height of the footer */
-   padding-bottom: 20px;
-   justify-content: center;
-   align-items: center;
 }
 .contact-header{
     display: flex;
