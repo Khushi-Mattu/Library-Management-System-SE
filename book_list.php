@@ -11,24 +11,24 @@ if (!$result_1) {
     echo "Something went wrong!";
     return;
 }
-$city = mysqli_fetch_assoc($result_1);
-if (!$city) {
+$bookName = mysqli_fetch_assoc($result_1);
+if (!$bookName) {
     echo "Sorry! We do not have this book.";
     return;
 }
 $book_id = $book['book_id'];
 
-$sql_2 = "SELECT * FROM stock WHERE book_id = $book_id";
+$sql_2 = "SELECT * FROM book WHERE book_id = $book_id";
 $result_2 = mysqli_query($conn, $sql_2);
 if (!$result_2) {
     echo "Something went wrong!";
     return;
 }
-$stock = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
+$book = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
 
 $sql_3 = "SELECT * 
             FROM borrowed_books iup
-            INNER JOIN stock p ON iup.book_id = p.book_id
+            INNER JOIN book p ON iup.book_id = p.book_id
             WHERE p.book_id = $book_id";
 $result_3 = mysqli_query($conn, $sql_3);
 if (!$result_3) {
@@ -43,7 +43,7 @@ $interested_users_books = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BOOK <?php echo $book_name ?> Library</title>
+    <title>BOOK <?php echo $bookName ?> Library</title>
 
     <?php
     include "includes/head_links.php";
@@ -62,17 +62,17 @@ $interested_users_books = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
                 <a href="index.php">Home</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
-                <?php echo $book_name; ?>
+                <?php echo $bookName; ?>
             </li>
         </ol>
     </nav>
 
     <div class="page-container">
         <?php
-        foreach ($stock as $book) {
-            $book_images = glob("img/books/" . $stock['id'] . "/*");
+        foreach ($book as $book) {
+            $book_images = glob("img/books/" . $book['book_id'] . "/*");
         ?>
-            <div class="book-card book-id-<?= $stock['book_id'] ?> row">
+            <div class="book-card book-id-<?= $book['book_id'] ?> row">
                 <div class="image-container col-md-4">
                     <img src="<?= $book_images[0] ?>" />
                 </div>
@@ -102,37 +102,10 @@ $interested_users_books = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
                             }
                             ?>
                         </div>
-                        <div class="interested-container">
-                            <?php
-                            $interested_users_count = 0;
-                            $is_interested = false;
-                            foreach ($borrowed_book as $interested_user_book) {
-                                if ($interested_user_book['book_id'] == $book['book_id']) {
-                                    $interested_users_count++;
-
-                                    if ($interested_user_book['user_id'] == $user_id) {
-                                        $is_interested = true;
-                                    }
-                                }
-                            }
-
-                            if ($is_interested) {
-                            ?>
-                                <i class="is-interested-image fas fa-heart" book_id="<?= $book['book_id'] ?>"></i>
-                            <?php
-                            } else {
-                            ?>
-                                <i class="is-interested-image far fa-heart" book_id="<?= $book['book_id'] ?>"></i>
-                            <?php
-                            }
-                            ?>
-                            <div class="interested-text">
-                                <span class="interested-user-count"><?= $interested_users_count ?></span> interested
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="detail-container">
-                        <div class="book-name"><?= $stock['book_name'] ?></div>
+                        <div class="book-name"><?= $book['bookName'] ?></div>
                     </div>
                     <div class="row no-gutters">
                         <div class="price-container col-6">
