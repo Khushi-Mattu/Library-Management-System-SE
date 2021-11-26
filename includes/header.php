@@ -15,7 +15,7 @@
                 ?>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#signup-modal">
-                            <em class="fas fa-user" ></em>Signup
+                            <em class="fas fa-user" ></em>Signup 
                         </a>
                     </li>
                     <div class="nav-vl"></div>
