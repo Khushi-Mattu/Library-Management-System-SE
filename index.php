@@ -12,9 +12,15 @@ session_start();
     include "includes/head_links.php";
     ?>
     <link href="css/index.css" rel="stylesheet" />
+    
 </head>
 
-<body>
+<style>
+  <?php include "css/index.css" ?>
+  <?php include "css/index.css" ?>
+  <?php include "css/bootstrap.min.css" ?>
+</style>
+<body style="background-color: burlywood;">
     <?php
     include "includes/header.php";
     ?>

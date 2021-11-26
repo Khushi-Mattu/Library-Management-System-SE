@@ -6,93 +6,27 @@
     padding: 160px 15px;
 }
 .header-sticky-top{
-    padding:10px;
+    padding-top:10px;
+    padding-bottom:10px;
 }
 body{
     background-color:burlywood;
 }
-
-  
-.fa:hover {  
-    opacity: 0.9;  
-}  
-.fa-facebook {  
-    background: #3B5998;  
-    color: white;
-    padding: 20px 20px 20px 20px;  
-    text-align: center;  
-    margin: 5px 2px;  
-    font-size: 30px; 
-    justify-content:center;
-    align-items: center;     
-    flex-wrap:wrap;
-    gap:15px;
-
-  }  
-.fa-twitter {  
-    background: #55ACEE;  
-    color: white;
-    padding: 20px 20px 20px 20px;  
-    text-align: center;  
-    margin: 5px 2px;  
-    font-size: 30px; 
-    justify-content:center;
-    align-items: center;     
-    flex-wrap:wrap;
-    gap:15px;
-  }  
-.fa-pinterest {  
-    background: #cb2027;  
-    color: white;  
-    padding: 20px 20px 20px 20px;  
-    text-align: center;  
-    margin: 5px 2px;  
-    font-size: 30px; 
-    justify-content:center;
-    align-items: center;   
-    flex-wrap:wrap;
-    gap:15px;
-  }  
-  .fa-linkedin {  
-    background: #007bb5;  
-    color: white;  
-    padding: 20px 20px 20px 20px;  
-    text-align: center;  
-    margin: 5px 2px;  
-    font-size: 30px; 
-    justify-content:center;
-    align-items: center;   
-    flex-wrap:wrap;
-    gap:15px;
-  }  
-  .fa-instagram {  
-    background: palevioletred;  
-    color: white; 
-    padding: 20px 20px 20px 20px;  
-    text-align: center;  
-    margin: 5px 2px;  
-    font-size: 30px; 
-    justify-content:center;
-    align-items: center;    
-    flex-wrap:wrap;
-    gap:15px;
-  }  
-  .fa-youtube {  
-    background: #bb0000;  
-    color: white;  
-    padding: 20px 20px 20px 20px;  
-    text-align: center;  
-    margin: 5px 2px;  
-    font-size: 30px; 
-    justify-content:center;
-    align-items: center;   
-    flex-wrap:wrap;
-    gap:15px;
-  }  
+.fa-hover{opacity:10px;}
+.fa-facebook,.fa-twitter,.fa-instagram,.fa-youtube{
+    height:50px;
+    color:black;
+    font-size:20px;
+}
 #footer {
+    display:flex;
+    flex-wrap: wrap;
    width:100%;
    height:60px;  
    bottom:0px; /* Height of the footer */
+   justify-content: center;
+   align-items: center;
+   gap:20px;
 }
 .contact-header{
     display: flex;
@@ -144,7 +78,6 @@ body{
     color:blue;
 }
 img.logo{
-    position: absolute;
     top: 0px;
     left: 0px;
     height:60px;
