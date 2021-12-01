@@ -3,9 +3,20 @@ session_start();
 require "includes/database_connect.php";
 
 $mem_id = isset($_SESSION['mem_id']) ? $_SESSION['mem_id'] : NULL;
-$feedback_id = $_GET["feedback_id"];
+$book = $_GET["book_id"];
 
-$sql_2 = "SELECT * FROM feedback WHERE feedback_id = $feedback_id";
+$sql_1 = "SELECT *
+            FROM stock 
+            WHERE book_id=$book" ;
+
+$result_1 = mysqli_query($conn, $sql_1);
+if (!$result_1) {
+    echo "Something went wrong!";
+    return;
+}
+
+$sql_2 = "SELECT * FROM testimonials WHERE book_id = $book";
+//die($sql_2);
 $result_2 = mysqli_query($conn, $sql_2);
 if (!$result_2) {
     echo "Something went wrong!";
@@ -13,7 +24,7 @@ if (!$result_2) {
 }
 $testimonials = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
 
-$sql_4 = "SELECT * FROM borrowed_book WHERE book_id = $book_id";
+$sql_4 = "SELECT * FROM borrowed_book WHERE book_id = $book";
 $result_4 = mysqli_query($conn, $sql_4);
 if (!$result_4) {
     echo "Something went wrong!";
@@ -33,7 +44,7 @@ $interested_users_count = mysqli_num_rows($result_4);
     <?php
     include "includes/head_links.php";
     ?>
-    <link href="css/property_detail.css" rel="stylesheet" />
+    <link href="css/book_details.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -47,7 +58,7 @@ $interested_users_count = mysqli_num_rows($result_4);
                 <a href="index.php">Home</a>
             </li>
             <li class="breadcrumb-item">
-                <a href="book_list.php?book=<?= $stock['book_name']; ?>"><?= $stock['book_name']; ?></a>
+                <a href="book_list.php?book=<?= $book['book_name']; ?>"><?= $book['book_name']; ?></a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
                 <?= $stock['book_name']; ?>
@@ -58,7 +69,7 @@ $interested_users_count = mysqli_num_rows($result_4);
     <div id="book-images" class="carousel slide" data-ride="carousel">
         <ol class="carousel-indicators">
             <?php
-            $property_images = glob("img/books/" . $stock['book_id'] . "/*");
+            $book_images = glob("img/books/" . $stock['book_id'] . "/*");
             foreach ($book_images as $index => $book_image) {
             ?>
                 <li data-target="#book-images" data-slide-to="<?= $index ?>" class="<?= $index == 0 ? "active" : ""; ?>"></li>
@@ -87,37 +98,11 @@ $interested_users_count = mysqli_num_rows($result_4);
         </a>
     </div>
 
-    <div class="property-summary page-container">
-        <div class="row no-gutters justify-content-between">
-            <div class="interested-container">
-                <?php
-                $is_interested = false;
-                foreach ($interested_users as $interested_user) {
-                    if ($interested_user['mem_id'] == $mem_id) {
-                        $is_interested = true;
-                    }
-                }
-
-                if ($is_interested) {
-                ?>
-                    <i class="is-interested-image fas fa-heart"></i>
-                <?php
-                } else {
-                ?>
-                    <i class="is-interested-image far fa-heart"></i>
-                <?php
-                }
-                ?>
-                <div class="interested-text">
-                    <span class="interested-user-count"><?= $interested_users_count ?></span> interested
-                </div>
-            </div>
-        </div>
         <div class="detail-container">
             <div class="book-name"><?= $stock['book_name'] ?></div>
         <div class="row no-gutters">
             <div class="rent-container col-6">
-                <div class="price">₹ <?= number_format($stock['price']) ?>/-</div>
+                <div class="price">₹ <?= ($stock['price']) ?>/-</div>
             </div>
             <div class="button-container col-6">
                 <a href="#" class="btn btn-primary">Buy Now</a>
@@ -125,24 +110,23 @@ $interested_users_count = mysqli_num_rows($result_4);
         </div>
             </div>
 
-    <div class="property-about page-container">
+    <div class="book-about page-container">
         <h1>About the Book</h1>
         <p><?= $stock['description'] ?></p>
     </div>
 
-    <div class="property-rating">
+    <div class="book-rating">
         <div class="page-container">
-            <h1>Property Rating</h1>
+            <h1>Book Rating</h1>
             <div class="row align-items-center justify-content-between">
                 <div class="col-md-6">
                     <div class="rating-criteria row">
                         <div class="col-6">
-                            <i class="rating-criteria-icon fas fa-broom"></i>
                             <span class="rating-criteria-text">Plot</span>
                         </div>
-                        <div class="rating-criteria-star-container col-6" title="<?= $property['rating_plot'] ?>">
+                        <div class="rating-criteria-star-container col-6" title="<?= $stock['rating_plot'] ?>">
                             <?php
-                            $rating = $property['rating_plot'];
+                            $rating = $stock['rating_plot'];
                             for ($i = 0; $i < 5; $i++) {
                                 if ($rating >= $i + 0.8) {
                             ?>
@@ -164,12 +148,11 @@ $interested_users_count = mysqli_num_rows($result_4);
 
                     <div class="rating-criteria row">
                         <div class="col-6">
-                            <i class="rating-criteria-icon fas fa-utensils"></i>
                             <span class="rating-criteria-text">Suspense</span>
                         </div>
-                        <div class="rating-criteria-star-container col-6" title="<?= $property['rating_suspense'] ?>">
+                        <div class="rating-criteria-star-container col-6" title="<?= $stock['rating_suspense'] ?>">
                             <?php
-                            $rating = $property['rating_suspense'];
+                            $rating = $stock['rating_suspense'];
                             for ($i = 0; $i < 5; $i++) {
                                 if ($rating >= $i + 0.8) {
                             ?>
@@ -191,12 +174,11 @@ $interested_users_count = mysqli_num_rows($result_4);
 
                     <div class="rating-criteria row">
                         <div class="col-6">
-                            <i class="rating-criteria-icon fa fa-lock"></i>
                             <span class="rating-criteria-text">Story Buildup</span>
                         </div>
-                        <div class="rating-criteria-star-container col-6" title="<?= $property['rating_story_buildup'] ?>">
+                        <div class="rating-criteria-star-container col-6" title="<?= $stock['rating_story_buildup'] ?>">
                             <?php
-                            $rating = $property['rating_story_buildup'];
+                            $rating = $stock['rating_story_buildup'];
                             for ($i = 0; $i < 5; $i++) {
                                 if ($rating >= $i + 0.8) {
                             ?>
@@ -230,7 +212,7 @@ $interested_users_count = mysqli_num_rows($result_4);
             <div class="testimonial-block">
                 <div class="testimonial-text">
                     <i class="fa fa-quote-left" aria-hidden="true"></i>
-                    <p><?= $testimonial['content'] ?></p>
+                    <p><?= $testimonial['testimonial'] ?></p>
                 </div>
                 <div class="testimonial-name">- <?= $testimonial['testimonial_name'] ?></div>
             </div>
@@ -242,10 +224,9 @@ $interested_users_count = mysqli_num_rows($result_4);
     <?php
     include "includes/signup_modal.php";
     include "includes/login_modal.php";
-    include "includes/footer.php";
     ?>
 
-    <script type="text/javascript" src="js/property_detail.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
 </body>
 
 </html>

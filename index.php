@@ -30,7 +30,7 @@ session_start();
 
         <form id="search-form" action="book_list.php" method="GET">
             <div class="input-group city-search">
-                <input type="text" class="form-control input-city" id='city' name='city' placeholder="Enter the book name you want to search for" />
+                <input type="text" class="form-control input-city" id='bookName' name='bookName' placeholder="Enter the book name you want to search for" />
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-secondary">
                         <em class="fa fa-search"></em>

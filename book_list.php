@@ -3,39 +3,13 @@ session_start();
 require "includes/database_connect.php";
 
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : NULL;
-$book = $_GET["bookName"];
-
-$sql_1 = "SELECT * FROM stock WHERE book_name = '$book'";
-$result_1 = mysqli_query($conn, $sql_1);
-if (!$result_1) {
-    echo "Something went wrong!";
-    return;
+$db = mysql_select_db("library", $connection); // Selecting Database
+//MySQL Query to read data
+$query = mysql_query("select * from stock", $connection);
+while ($row = mysql_fetch_array($query)) {
+echo "<b><a href="readphp.php?id={$row['mem_id']}">{$row['mem_name']}</a></b>";
+echo "<br />";
 }
-$bookName = mysqli_fetch_assoc($result_1);
-if (!$bookName) {
-    echo "Sorry! We do not have this book.";
-    return;
-}
-$book_id = $book['book_id'];
-
-$sql_2 = "SELECT * FROM book WHERE book_id = $book_id";
-$result_2 = mysqli_query($conn, $sql_2);
-if (!$result_2) {
-    echo "Something went wrong!";
-    return;
-}
-$book = mysqli_fetch_all($result_2, MYSQLI_ASSOC);
-
-$sql_3 = "SELECT * 
-            FROM borrowed_books iup
-            INNER JOIN book p ON iup.book_id = p.book_id
-            WHERE p.book_id = $book_id";
-$result_3 = mysqli_query($conn, $sql_3);
-if (!$result_3) {
-    echo "Something went wrong!";
-    return;
-}
-$interested_users_books = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -62,24 +36,21 @@ $interested_users_books = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
                 <a href="index.php">Home</a>
             </li>
             <li class="breadcrumb-item active" aria-current="page">
-                <?php echo $bookName; ?>
+                <?php echo $book[0]['book_name']; ?>
             </li>
         </ol>
     </nav>
 
     <div class="page-container">
-        <?php
-        foreach ($book as $book) {
-            $book_images = glob("img/books/" . $book['book_id'] . "/*");
-        ?>
+    
             <div class="book-card book-id-<?= $book['book_id'] ?> row">
                 <div class="image-container col-md-4">
-                    <img src="<?= $book_images[0] ?>" />
+                    <img src="img/books/1000" />
                 </div>
                 <div class="content-container col-md-8">
                     <div class="row no-gutters justify-content-between">
                         <?php
-                        $total_rating = ($book['rating_plot'] + $book['rating_suspense'] + $book['rating_story_building']) / 3;
+                        $total_rating = ($book['rating_plot'] + $book['rating_suspense'] + $book['rating_story_buildup']) / 3;
                         $total_rating = round($total_rating, 1);
                         ?>
                         <div class="star-container" title="<?= $total_rating ?>">
@@ -105,7 +76,7 @@ $interested_users_books = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
                         
                     </div>
                     <div class="detail-container">
-                        <div class="book-name"><?= $book['bookName'] ?></div>
+                        <div class="book-name"><?= $book['book_name'] ?></div>
                     </div>
                     <div class="row no-gutters">
                         <div class="price-container col-6">
@@ -118,7 +89,7 @@ $interested_users_books = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
                 </div>
             </div>
         <?php
-        }
+        
 
         if (count($book) == 0) {
         ?>
@@ -133,7 +104,6 @@ $interested_users_books = mysqli_fetch_all($result_3, MYSQLI_ASSOC);
     <?php
     include "includes/signup_modal.php";
     include "includes/login_modal.php";
-    include "includes/footer.php";
     ?>
 
     <script type="text/javascript" src="js/book_list.js"></script>
