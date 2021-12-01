@@ -3,13 +3,7 @@ session_start();
 require "includes/database_connect.php";
 
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : NULL;
-$db = mysql_select_db("library", $connection); // Selecting Database
-//MySQL Query to read data
-$query = mysql_query("select * from stock", $connection);
-while ($row = mysql_fetch_array($query)) {
-echo "<b><a href="readphp.php?id={$row['mem_id']}">{$row['mem_name']}</a></b>";
-echo "<br />";
-}
+$stock=mysqli_query("select * from stock",$connection);
 ?>
 
 <!DOCTYPE html>
