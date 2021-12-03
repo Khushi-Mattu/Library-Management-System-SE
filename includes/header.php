@@ -1,7 +1,7 @@
 <div class="header sticky-top">
     <nav class="navbar navbar-expand-md navbar-light">
         <a class="navbar-brand" href="index.php">
-            <img src="img/logo.png" alt="logo" height="100px"/>
+            <img src="img/logo.png" />
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar">
             <span class="navbar-toggler-icon"></span>
@@ -15,13 +15,13 @@
                 ?>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#signup-modal">
-                            <em class="fas fa-user" ></em>Signup 
+                            <i class="fas fa-user"></i>Signup
                         </a>
                     </li>
                     <div class="nav-vl"></div>
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#login-modal">
-                            <em class="fas fa-sign-in-alt"></em>Login
+                            <i class="fas fa-sign-in-alt"></i>Login
                         </a>
                     </li>
                 <?php
@@ -32,13 +32,13 @@
                     </div>
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard.php">
-                            <em class="fas fa-user"></em>Dashboard
+                            <i class="fas fa-user"></i>Dashboard
                         </a>
                     </li>
                     <div class="nav-vl"></div>
                     <li class="nav-item">
                         <a class="nav-link" href="logout.php">
-                            <em class="fas fa-sign-out-alt"></em>Logout
+                            <i class="fas fa-sign-out-alt"></i>Logout
                         </a>
                     </li>
                 <?php

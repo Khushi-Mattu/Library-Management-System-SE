@@ -31,7 +31,7 @@ if (!empty($email)) {
 		}
 		else{
 
-			$result1 = mysqli_query($conn,"SELECT mem_name, mem_email, mem_password FROM member WHERE mem_email = '".$email."' AND  mem_password = '".$pass."'");
+			$result1 = mysqli_query($conn,"SELECT name, email, pass FROM userrec WHERE email = '".$email."' AND  pass = '".$pass."'");
 
 
             if (mysqli_num_rows($result1) > 0 && $row = $result1->fetch_assoc() ) {
@@ -42,7 +42,7 @@ if (!empty($email)) {
             	// $_SESSION["empname"] = $email;
            	    $_SESSION['loggedin'] = true;
            	    $conn->close();
-            	header('location: book_list.php');
+            	header('location: mainpage.php');
 
             }
             else{

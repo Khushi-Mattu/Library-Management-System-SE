@@ -1,232 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <!-- webstite name -->
+        <title>
+            
+            TastyFood
+        </title>
+        
+            <!-- Bootstrap CSS -->
+            
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Home Page</title>
-    <link rel="icon" type="image/png" href="img/logo_final.jpg"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
-    <link href="css/common.css" rel="stylesheet" />
-    <link href="css/index.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="header-sticky-top">
-        <nav class="navbar navbar-expand-md navbar-light">
-            <a class="navbar-brand" href="index.html">
-                <img class="logo" src="img/logo_final.jpg">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-navbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-            <div class="collapse navbar-collapse justify-content-end" id="my-navbar">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#signup-modal">
-                            <i class="fas fa-user"></i>Signup
-                        </a>
-                    </li>
-                    <div class="nav-vl"></div>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#login-modal">
-                            <i class="fas fa-sign-in-alt"></i>Login
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+            <!-- header section reqirement -->
+            <link rel="stylesheet" href="header.css">
+            <link rel="icon" type="image/png" href="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg"/>
 
-    <div id="loading">
-    </div>
+    </head>
 
-
-
-    <div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-labelledby="signup-heading" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="signup-heading">Signup with Library</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <form id="signup-form" class="form" role="form">
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-user"></i>
-                                </span>
+    <body style="background-color: black; color: white;">
+        <!-- Main container -->
+        
+        
+            <nav class="navbar navbar-expand-lg navbar-light bg-light" style="margin: 0%;">
+                <a class="navbar-brand my-2 my-lg-0" href="#">
+                    <img src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="">
+                </a>
+                <a class="navbar-brand" href="#">TastyFood</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="AboutUs.html">About Us <span class="sr-only">(current)</span></a>
+                        </li>
+                        <!--<li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                            <input type="text" class="form-control" name="full_name" placeholder="Full Name" maxlength="30" required>
-                        </div>
-
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-phone-alt"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control" name="phone" placeholder="Phone Number" maxlength="10" minlength="10" required>
-                        </div>
-
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-envelope"></i>
-                                </span>
-                            </div>
-                            <input type="email" class="form-control" name="email" placeholder="Email" required>
-                        </div>
-
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                            </div>
-                            <input type="password" class="form-control" name="password" placeholder="Password" minlength="6" required>
-                        </div>
-
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-university"></i>
-                                </span>
-                            </div>
-                            <input type="text" class="form-control" name="college_name" placeholder="College Name" maxlength="150" required>
-                        </div>
-
-                        <div class="form-group">
-                            <span>I'm a</span>
-                            <input type="radio" class="ml-3" id="gender-male" name="gender" value="male" /> Male
-                            <label for="gender-male">
-                            </label>
-                            <input type="radio" class="ml-3" id="gender-female" name="gender" value="female" />
-                            <label for="gender-female">
-                                Female
-                            </label>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-primary">Create Account</button>
-                        </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li>-->
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
+            </nav>
+        
 
-                <div class="modal-footer">
-                    <span>Already have an account?
-                        <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#login-modal">Login</a>
-                    </span>
-                </div>
+
+
+
+        <div class="container-fluid" style="margin-top: 0%; height: 100vh; background-size: cover; background-position: center center; background-repeat: no-repeat;
+  background-image: url(https://b.zmtcdn.com/mx-onboarding-hero87f77501659a5656cad54d98e72bf0d81627911821.webp); ">
+                    <div class="hero">
+                        <hgroup>
+                            <h1>No 1 In Taste</h1>
+                            <h3>Place your order to enjoy awesome food</h3>
+                        </hgroup>
+                        <button class="btn btn-hero btn-lg" role="button">Order</button>
+                    </div>        
+        </div> 
+        
+        
+        <div class="container">
+            <div class="jumbotron" style="background-color: black">
+                <h1>Menu</h1>
+                <!-- <h3>Bestsellers</h3> -->
+
             </div>
-        </div>
-    </div>
 
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="login-heading" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="login-heading">Login with Library</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <form id="login-form" class="form" role="form">
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-user"></i>
-                                </span>
+            <div>
+                <form action="">
+                <!--<h3>Bestsellers</h3>-->
+                <div class="row" style="color: black;">
+                   
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="nimages/veg burger.jpg" alt="Card image cap" height=190px>
+                        <div class="card-body">
+                            <h5 class="card-title">Veg Burger</h5>
+                            <p class="card-text">Veg Burger with aloo tikki, onions, tomatoes, with cheesy sauce along the sides french fries and chips.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="nimages/chefs special pizza.jpg" alt="Card image cap" height=190px>
+                            <div class="card-body">
+                                <h5 class="card-title">Chef's Special Pizza</h5>
+                                <p class="card-text">Onions, tomatoes, red paprika, olives along with cheddar cheese as toppings.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>
-                            <input type="email" class="form-control" name="email" placeholder="Email" required>
                         </div>
-
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">
-                                    <i class="fas fa-lock"></i>
-                                </span>
+                    </div>
+                    
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="nimages/Frankie.jpg" alt="Card image cap" height=190px >
+                            <div class="card-body">
+                                <h5 class="card-title">Frankie</h5>
+                                <p class="card-text">Potaoes stuffed along with onions and capsicum in a chappati.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
                             </div>
-                            <input type="password" class="form-control" name="password" placeholder="Password" minlength="6" required>
                         </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-primary">Login</button>
+                    </div>
+                    
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="nimages/Brownie.jpg" alt="Card image cap" height=190px>
+                            <div class="card-body">
+                                <h5 class="card-title">Brownie</h5>
+                                <p class="card-text">Chocolate flavoured without egg brownie served with hot chocolate.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
-                    </form>
-                </div>
-
-                <div class="modal-footer">
-                    <span>
-                        <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal">Click here</a>
-                        to register a new account
-                    </span>
-                </div>
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="nimages/Pancakes.jpg" alt="Card image cap" height=190px>
+                            <div class="card-body">
+                                <h5 class="card-title">Pancakes</h5>
+                                <p class="card-text">Vanilla pankcase served along with the chocolate chips with vanila base icecream.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4" style="margin-top: 20px;">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="nimages/sandwich.jpg" alt="Card image cap" height=190px>
+                            <div class="card-body">
+                                <h5 class="card-title">Sandwiches</h5>
+                                <p class="card-text">Onions, capsicum and tomatoes along with sauces in a multigrain bread.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
             </div>
-        </div>
-    </div>
-
-
-
-
-
-
-    <div class="banner-container">
-        <h2 class="whitepb-3">This is the perfect place for bookworms!</h2>
-
-        <form id="search-form">
-            <div class="input-group book-search">
-                <input type="text" class="form-control input-book" id='book' name='book' placeholder="Enter the book you want to search" />
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-secondary">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
+            <br><br><br>
+            </form>
             </div>
-        </form>
-    </div>
-    <div id="book_list" class="list">
-        <a class="booklist" href="book_list.html">To find the book list, click here!</a>
-    </div>
+        </div> 
+       
 
-    <div id="footer" class="container">
-        <div class="contact-header" class="col-md-5">
-          <h5>Contact Us</h5>
-        </div>
-        <div class="contact-content">
-          <h5>Reach out to us at <a class="email-link" href="ourlibrary@gmail.com" >email</a></h5>
-        </div>
-        <div class="social-buttons">
-            <!--- <a href=>--->
-            <div class="red-circle1">
-              <img src="img/youtube.png" alt="YouTube icon" width='50' height='50' />
-            </div>
-          </a>
-          <!--- <a href="https://twitter.com/CampusAndroid">---->
-            <div class="blue-circle2">
-              <img src="img/twitter.png" alt="Twitter icon" width='60' height='40'/>
-            </div>
-          </a>
-          <!--- <a href=>--->
-            <div class="blue-circle3">
-              <img src="img/facebook.png" alt="Facebook icon" width='40' height='40'/>
-            </div>
-          </a>
-          <!--- <a href=>--->
-            <div class="pink-circle1">
-              <img src="img/instagram.png" alt="Instagram icon" width='60' height='50'/>
-            </div>
-          </a>
-        </div>
-      </div>
-
-    <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-</body>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    </body>
+</html>

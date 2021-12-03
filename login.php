@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <!-- page name -->
-    <title>Login</title>
+    <title>Sign Up</title>
 
     <!-- Font Icon -->
     <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
@@ -38,7 +38,7 @@
             <div class="container">
                 <div class="signin-content">
                     <div class="signin-image">
-                        <figure><img src="img/books.png" alt="sign up image"></figure>
+                        <figure><img src="images/signin-image.png" alt="sign up image"></figure>
                         <a href="signup.php" class="signup-image-link">Create an account</a>
                     </div>
 

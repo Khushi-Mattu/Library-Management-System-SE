@@ -6,27 +6,37 @@
     padding: 160px 15px;
 }
 .header-sticky-top{
-    padding-top:10px;
-    padding-bottom:10px;
+    padding:10px;
 }
 body{
     background-color:burlywood;
 }
-.fa-hover{opacity:10px;}
-.fa-facebook,.fa-twitter,.fa-instagram,.fa-youtube{
-    height:50px;
-    color:black;
-    font-size:20px;
+.social-buttons{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: 2 px;
+    flex-wrap:wrap;
+    gap:15px;
+}
+.blue-circle2{
+    background-color: rgb(0, 89, 255);
+}
+.red-circle1{
+    background-color: red;
+}
+.pink-circle1{
+    background-color: rgb(251, 57, 88);
+}
+.blue-circle3{
+    background-color: blue;
 }
 #footer {
-    display:flex;
-    flex-wrap: wrap;
    width:100%;
    height:60px;  
    bottom:0px; /* Height of the footer */
-   justify-content: center;
-   align-items: center;
-   gap:20px;
 }
 .contact-header{
     display: flex;
@@ -47,12 +57,10 @@ body{
         padding: 100px 15px;
     }
 }
-.white-pb-3{
+.whitepb-3{
     color:aliceblue;
 }
-.nav-item{
-    color:aliceblue;
-}
+
 .book-search {
     max-width: 530px;
     margin: auto;
@@ -77,11 +85,14 @@ body{
 .email-link{
     color:blue;
 }
+
+
 img.logo{
+    position: absolute;
     top: 0px;
     left: 0px;
     height:60px;
-    width:90px;
+    width:110px;
  }
  .list{
     display:flex;
