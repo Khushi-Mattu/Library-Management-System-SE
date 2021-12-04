@@ -53,7 +53,7 @@
                             <h1>The library!</h1>
                             <h3>Place your order to feel the joy of reading</h3>
                         </hgroup>
-                        <button class="btn btn-hero btn-lg" role="button" ><a style="color: white; text-decoration: none;" href="#menu">Order Now</a></button>
+                        <button class="btn btn-hero btn-lg" role="button" ><a style="color: white; text-decoration: none;" href="#book_list">Order Now</a></button>
                     </div>        
         </div> 
         
@@ -74,7 +74,7 @@
                 $result = mysqli_query($conn, $query);
                 
                 echo "<div class='row' style= 'color : black; margin-top : 1px;'>";
-                    while($row = mysqli_fetch_array($result)){
+                    while($row = mysqli_fetch_array($result)){ // fetch rows from the database and store them as an array.
                     
                     echo  "<div class='col-sm-4' style='margin-top : 20px;' >
                             <div class='card' style='height : 100%; width: 18rem; '>

@@ -4,17 +4,6 @@ $email = filter_input(INPUT_POST, 'email');
 $pass = filter_input(INPUT_POST, 'password');
 
 
-if ($email=='admin') {
-		# code...
-		if ($pass == '12345') {
-			# code...
-			header('location: admin.html');
-		}
-		else{
-			echo "admin pass";
-		}
-}
-else{
 
 if (!empty($email)) {
 	# code...
@@ -34,12 +23,10 @@ if (!empty($email)) {
 			$result1 = mysqli_query($conn,"SELECT name, email, pass FROM userrec WHERE email = '".$email."' AND  pass = '".$pass."'");
 
 
-            if (mysqli_num_rows($result1) > 0 && $row = $result1->fetch_assoc() ) {
-            	# code...
+            if (mysqli_num_rows($result1) > 0 && $row = $result1->fetch_assoc() ) { 
+				// check if data is present in the database or not and  mysqli_fetch_assoc() function fetches a 
+				//result row as an associative array.
             	session_start();
-            	// $_SESSION["id"] = $row["id"];
-            	// $_SESSION['name'] = $row["name"];
-            	// $_SESSION["empname"] = $email;
            	    $_SESSION['loggedin'] = true;
            	    $conn->close();
             	header('location: mainpage.php');
@@ -61,6 +48,6 @@ if (!empty($email)) {
 else{
 	echo "enter email";
 }
-}
+
 
  ?>
