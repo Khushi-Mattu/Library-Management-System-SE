@@ -92,7 +92,7 @@
                                     echo $row['price'];
                                     echo "</h5>"; 
                                     echo "Online or Hardcopy";
-	                                    echo "<input type = 'text' name = 'username[]' class = 'class_name form-control input-number' value=' '/><br/>";
+	                                    echo "<input type = 'text' name = 'username[]' class = 'class_name form-control input-number' value='0'/><br/>";
                                 echo "</div>  
                             </div>  
                         </div>";

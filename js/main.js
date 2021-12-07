@@ -1,6 +1,6 @@
 
 (function ($) {
-    "use strict";
+    "use strict"; //With strict mode, we can not use undeclared variables.
 
 
     /*==================================================================
