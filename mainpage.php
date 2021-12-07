@@ -53,7 +53,7 @@
                             <h1>The library!</h1>
                             <h3>Place your order to feel the joy of reading</h3>
                         </hgroup>
-                        <button class="btn btn-hero btn-lg" role="button" ><a style="color: white; text-decoration: none;" href="#book_list">Order Now</a></button>
+                        
                     </div>        
         </div> 
         
@@ -62,7 +62,6 @@
             <div class="jumbotron" style="margin-top:30px; background-color: black; text-align : center;">
                 <h1 id="menu" >Book List</h1>
                 <h3>Choose your book</h3>
-
             </div>
 
             <div>
@@ -93,7 +92,7 @@
                                     echo $row['price'];
                                     echo "</h5>"; 
                                     echo "Online or Hardcopy";
-	                                    echo "<input type = 'text' name = 'username[]' class = 'class_name form-control input-number' value='0'/><br/>";
+	                                    echo "<input type = 'text' name = 'username[]' class = 'class_name form-control input-number' value=' '/><br/>";
                                 echo "</div>  
                             </div>  
                         </div>";
